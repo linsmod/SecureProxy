@@ -7,7 +7,7 @@ if [ ! -d $install_path ]; then
 fi
 cd $install_path
 if [ ! -f "publish_linux_x64.zip" ]; then
-  wget -N https://github.com/kissstudio/SecureProxy/releases/download/v1.0/publish_linux_x64.zip
+  wget -N https://github.com/kissstudio/SecureProxy/releases/download/v1.1/indp_linux_x64.zip
 fi
 
 apt-get -y install unzip
