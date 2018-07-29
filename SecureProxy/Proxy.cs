@@ -78,16 +78,8 @@ namespace RProxy.Proxy
         /// </summary>
         public static void Main()
         {
-            try
-            {
-                Proxy prx = new Proxy(Path.Combine(AppContext.BaseDirectory, "config.xml"));
-                prx.Start();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("[WARN] " + ex.Message + "\r\n" + ex.StackTrace);
-                Console.WriteLine("The program ended abnormally!");
-            }
+            Proxy prx = new Proxy(Path.Combine(AppContext.BaseDirectory, "config.xml"));
+            prx.Start();
         }
         /// <summary>
         /// Initializes a new Proxy instance.
@@ -118,6 +110,8 @@ namespace RProxy.Proxy
             string command;
             Console.WriteLine("\r\n  Secure Sock5 Proxy\r\n  ~~~~~~~~~~~~~~~~~~\r\n\r\n (type 'help' for the command list)");
             Console.Write("\r\n>");
+
+            Thread.Sleep(-1);
             command = Console.ReadLine().ToLower();
             while (!command.Equals("exit"))
             {
