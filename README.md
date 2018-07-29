@@ -1,6 +1,6 @@
 # SecureProxy
 
-CLIENT.RAW_DATA => SecureProxy.PORT_MAP.ENCRYPTED_DATA => GATEWAY/FIREWALL => SecureProxy.SOCK5_HANDLER.DECRYPTED_DATA => SecureProxy.SOCK5_CLIENT.RAWDATA => INTERNET
+CLIENT.RAW_DATA => SecureProxy.PORT_MAP.ENCRYPTED_DATA => GATEWAY/FIREWALL => SecureProxy.SOCK5_HANDLER.ENCRYPTED_DATA => SecureProxy.SOCK5_CLIENT.RAWDATA => INTERNET
 
 # SecureProxy Client
 should runs on client as a proxy, its a port mapping tool with data encryption/decryption, encrypt data and send it to SecureProxy Server then recv data from SecureProxy Server and decrypt it for client
@@ -25,4 +25,6 @@ this config is for mapping request from client 12345 port to  YOUR_SERVER's 6553
 ## system
  config 127.0.0.1:12345 as system's sock5 proxy. if sock5 proxy is not supported by system, try firefox
 
-
+# How it's secrue
+user can redefined the encrypt/decrypt method using class SecureStream.
+its data stucture invisible for GATEWAY/FIREWALL.
