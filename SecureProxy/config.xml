@@ -1,0 +1,17 @@
+<MentalisProxy>
+  <Version value="1.0" />
+  <Settings>
+    <authorize value="never" />
+    <admin_hash value="Gh3JHJBzJcaScd3wyUS8cg==" />
+    <config_ip value="localhost" />
+    <config_port value="4" />
+    <errorlog value="errors.log" />
+  </Settings>
+  <Users>
+  </Users>
+  <Listeners>
+    <listener type="RProxy.Proxy.Socks.SocksListener" value="host:0.0.0.0;int:65530;authlist" />
+    <!--<listener type="RProxy.Proxy.PortMap.PortMapListener" value="host:0.0.0.0;int:12345;host:127.0.0.1;int:65530" />-->
+    <listener type="RProxy.Proxy.PortMap.PortMapListener" value="host:0.0.0.0;int:12345;host:96.126.118.178;int:65530" />
+  </Listeners>
+</MentalisProxy>
