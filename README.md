@@ -34,6 +34,6 @@ this config is for mapping request from client 12345 port to  YOUR_SERVER's 6553
 
 # How it's secrue
 developer can redefine the encrypt/decrypt method using class SecureStream.
-its data stucture invisible for GATEWAY/FIREWALL.
+the request/response data stucture is invisible to GATEWAY/FIREWALL.
 
 
