@@ -32,7 +32,7 @@ this config is for mapping request from client 12345 port to  YOUR_SERVER's 6553
  
 # Install as service
 ## ubuntu 16.04
-wget -N https://raw.githubusercontent.com/kissstudio/SecureProxy/master/SecureProxy/install.sh && ./install.h
+wget -N https://raw.githubusercontent.com/kissstudio/SecureProxy/master/SecureProxy/install.sh && ./install.sh
 
 ## windows
 :only executable provided for now.
