@@ -55,7 +55,6 @@ namespace SecureProxyServer
 
         public async Task ReceiveAsync(byte[] buffer, int offset, int len, Func<int, Task> callback)
         {
-            int bytes = -1;
             try
             {
                 SocketAsyncEventArgs sockArgs;

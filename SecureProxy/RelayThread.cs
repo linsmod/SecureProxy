@@ -10,7 +10,6 @@ namespace SecureProxyServer
 {
     public class RelayThread : IDisposable
     {
-        bool _disconnected;
         public byte[] ClientBuffer = new byte[8192 * 4];
         public byte[] RemoteBuffer = new byte[8192 * 4];
         public SocketConnection ClientConnection;
@@ -29,41 +28,14 @@ namespace SecureProxyServer
             ClientConnection.ReceiveAsync(ClientBuffer, OnClientReceive);
             RemoteConnection.ReceiveAsync(RemoteBuffer, OnRemoteReceive);
         }
-        //public async Task OnRemoteFirstReceive(int bytesReceived)
-        //{
-        //    if (bytesReceived > 0)
-        //    {
-        //        await OnRemoteReceive(bytesReceived);
-        //    }
-        //    if (bytesReceived < 0)
-        //    {
-        //        this.Dispose();
-        //    }
-        //}
-        //public async Task OnClientFirstReceive(int bytesReceived)
-        //{
-        //    if (bytesReceived > 0)
-        //    {
-        //        await OnClientReceive(bytesReceived);
-        //    }
-        //    if (bytesReceived < 0)
-        //    {
-        //        this.Dispose();
-        //    }
-        //}
 
         public async Task OnClientReceive(int bytesReceived)
         {
-            if (bytesReceived > 0)
+            if (bytesReceived > 0 && !_disposeCalled)
             {
                 await RemoteConnection.SendAsync(ClientBuffer, 0, bytesReceived, OnRemoteSent);
             }
-            if (bytesReceived == 0)
-            {
-                this.Dispose();
-                //await RemoteConnection.ReceiveAsync(RemoteBuffer, OnRemoteReceive);
-            }
-            if (bytesReceived < 0)
+            if (bytesReceived <= 0)
             {
                 this.Dispose();
             }
@@ -71,16 +43,11 @@ namespace SecureProxyServer
 
         public async Task OnRemoteReceive(int bytesReceived)
         {
-            if (bytesReceived > 0)
+            if (bytesReceived > 0 && !_disposeCalled)
             {
                 await ClientConnection.SendAsync(RemoteBuffer, 0, bytesReceived, OnClientSent);
             }
-            if (bytesReceived == 0)
-            {
-                this.Dispose();
-                //await ClientConnection.ReceiveAsync(ClientBuffer, OnClientReceive);
-            }
-            if (bytesReceived < 0)
+            if (bytesReceived <= 0)
             {
                 this.Dispose();
             }
@@ -88,7 +55,7 @@ namespace SecureProxyServer
 
         public void OnClientSent(int bytesSent)
         {
-            if (bytesSent > 0)
+            if (bytesSent > 0 && !_disposeCalled)
             {
                 RemoteConnection.ReceiveAsync(RemoteBuffer, OnRemoteReceive);
             }
@@ -96,7 +63,7 @@ namespace SecureProxyServer
 
         public void OnRemoteSent(int bytesSent)
         {
-            if (bytesSent > 0)
+            if (bytesSent > 0 && !_disposeCalled)
             {
                 ClientConnection.ReceiveAsync(ClientBuffer, OnClientReceive);
             }
@@ -108,7 +75,6 @@ namespace SecureProxyServer
             if (!_disposeCalled)
             {
                 _disposeCalled = true;
-                _disconnected = true;
                 if (this.ClientConnection != null)
                 {
                     this.ClientConnection.Shutdown(System.Net.Sockets.SocketShutdown.Both);
