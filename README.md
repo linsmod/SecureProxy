@@ -24,7 +24,16 @@ this config is for mapping request from client 12345 port to  YOUR_SERVER's 6553
 
 ## system
  config 127.0.0.1:12345 as system's sock5 proxy. if sock5 proxy is not supported by system, try firefox
+ 
+# Install as service
+##ubuntu 16.04
+download https://github.com/kissstudio/SecureProxy/blob/master/SecureProxy/install.sh and execute
+
+##windows
+:only executable provided for now.
 
 # How it's secrue
 user can redefined the encrypt/decrypt method using class SecureStream.
 its data stucture invisible for GATEWAY/FIREWALL.
+
+
