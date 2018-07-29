@@ -26,10 +26,10 @@ this config is for mapping request from client 12345 port to  YOUR_SERVER's 6553
  config 127.0.0.1:12345 as system's sock5 proxy. if sock5 proxy is not supported by system, try firefox and select sock5 at it's network setting page.
  
 # Install as service
-##ubuntu 16.04
+## ubuntu 16.04
 `wget -N https://raw.githubusercontent.com/kissstudio/SecureProxy/master/SecureProxy/install.sh && ./install.h
 
-##windows
+## windows
 :only executable provided for now.
 
 # How it's secrue
