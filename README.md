@@ -1,6 +1,10 @@
-# SecureProxy
+# How it works?
 
-CLIENT.RAW_DATA => SecureProxy.PORT_MAP.ENCRYPTED_DATA => GATEWAY/FIREWALL => SecureProxy.SOCK5_HANDLER.ENCRYPTED_DATA => SecureProxy.SOCK5_CLIENT.RAWDATA => INTERNET
+### send:
+CLIENT.RAW_DATA => SecureProxy.PORT_MAP.ENCRYPTED_DATA => GATEWAY/FIREWALL => SecureProxy.SOCK5_HANDLER.ENCRYPTED_DATA => SecureProxy.SOCK5_CLIENT.RAW_DATA => INTERNET
+
+### recv:
+CLIENT.RAW_DATA <= SecureProxy.PORT_MAP.ENCRYPTED_DATA <= GATEWAY/FIREWALL <= SecureProxy.SOCK5_HANDLER.ENCRYPTED_DATA <= SecureProxy.SOCK5_CLIENT.RAW_DATA <= INTERNET
 
 # SecureProxy Client
 runs on client as a proxy, actually it use port mapping transfer data with encryption and decryption methods,
