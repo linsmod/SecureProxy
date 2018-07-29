@@ -33,7 +33,7 @@ this config is for mapping request from client 12345 port to  YOUR_SERVER's 6553
 :only executable provided for now.
 
 # How it's secrue
-developer can redefine the encrypt/decrypt method using class SecureStream.
-the request/response data stucture is invisible to GATEWAY/FIREWALL.
+developer can re-define the encrypt/decrypt method by editing class SecureStream.
+the request/response data stucture is invisible to GATEWAY/FIREWALL due to the encrypt/decrypt method.
 
 
