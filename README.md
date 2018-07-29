@@ -23,7 +23,7 @@ server:
 this config is for mapping request from client 12345 port to  YOUR_SERVER's 65530 port
 
 ## system
- config 127.0.0.1:12345 as system's sock5 proxy. if sock5 proxy is not supported by system, try firefox
+ config 127.0.0.1:12345 as system's sock5 proxy. if sock5 proxy is not supported by system, try firefox and select sock5 at it's network setting page.
  
 # Install as service
 ##ubuntu 16.04
