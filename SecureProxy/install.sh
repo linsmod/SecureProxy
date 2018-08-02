@@ -11,7 +11,7 @@ if [ ! -f "publish_linux_x64.zip" ]; then
 fi
 
 apt-get -y install unzip
-unzip -o publish_linux_x64.zip
+unzip -o indp_linux_x64.zip
 chmod -R 755 ${install_path}/"SecureProxyServer"
 apt-get -y install  libunwind8-dev
 if [ ! -f "/etc/init.d/spsvr" ]; then
